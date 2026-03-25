@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nano \
     ssh \
     zsh \
+    sudo \
     python3 \
     python3-pip \
     git \
@@ -61,8 +62,11 @@ ARG USER_UID=1000
 ARG USER_GID=1000
 
 # Create the group first, then create the user belonging to that group
+# Add user to the sudo group and allow passwordless sudo
 RUN groupadd --gid ${USER_GID} ${USERNAME} \
-    && useradd -m -u ${USER_UID} -g ${USER_GID} -s /bin/zsh ${USERNAME}
+    && useradd -m -u ${USER_UID} -g ${USER_GID} -s /bin/zsh ${USERNAME} \
+    && usermod -aG sudo ${USERNAME} \
+    && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER ${USERNAME}
 
 # Set Working Directory to /CTF
