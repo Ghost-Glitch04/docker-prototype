@@ -40,31 +40,31 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 #Install packages - Network Scanners, Reconnaissance, Vulnerability Scanning, and Enumeration
 RUN apt-get update && apt-get install -y --no-install-recommends \
-#    nmap \
-#   ffuf \
-#    whatweb \
-#    nuclei \
-#    nikto \
-#    enum4linux \
-#    smbclient \
-#    hydra \
-#    && rm -rf /var/lib/apt/lists/*
+    nmap \
+    ffuf \
+    whatweb \
+    nuclei \
+    nikto \
+    enum4linux \
+    smbclient \
+    hydra \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install packages - Web Exploitation Tools
-#RUN apt-get update && apt-get install -y --no-install-recommends \
-#    gobuster \
-#    sqlmap \
-#    burpsuite \
-#    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gobuster \
+    sqlmap \
+    burpsuite \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install packages - Binary/Pwn
-#RUN apt-get update && apt-get install -y --no-install-recommends \
-#    gdb \
-#    radare2 \
-#    ltrace \
-#    binwalk \
-#    && rm -rf /var/lib/apt/lists/*
-#RUN pipx install pwntools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gdb \
+    radare2 \
+    ltrace \
+    binwalk \
+    && rm -rf /var/lib/apt/lists/*
+RUN pipx install pwntools
 
 # Mirror the local user and reconstruct into the container
 # The following build arguments are expected to be passed during the build process:
