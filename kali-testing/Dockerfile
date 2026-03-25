@@ -18,8 +18,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ssh \
     zsh \
     sudo \
+    tmux \
     python3 \
     python3-pip \
+    pipx \
     git \
     && rm -rf /var/lib/apt/lists/*
 
@@ -33,12 +35,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tcpdump \
     netcat-openbsd \
     whois \
+    openvpn \
     && rm -rf /var/lib/apt/lists/*
 
-# Install packages - Network Scanners, Reconnaissance, Vulnerability Scanning, and Enumeration
-#RUN apt-get update && apt-get install -y --no-install-recommends \
-#     nmap \
-#    ffuf \
+#Install packages - Network Scanners, Reconnaissance, Vulnerability Scanning, and Enumeration
+RUN apt-get update && apt-get install -y --no-install-recommends \
+#    nmap \
+#   ffuf \
 #    whatweb \
 #    nuclei \
 #    nikto \
@@ -61,7 +64,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #    ltrace \
 #    binwalk \
 #    && rm -rf /var/lib/apt/lists/*
-#RUN pip3 install pwntools
+#RUN pipx install pwntools
 
 # Mirror the local user and reconstruct into the container
 # The following build arguments are expected to be passed during the build process:
