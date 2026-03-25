@@ -23,6 +23,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+# Install packages - Networking Tools and Diagnostics
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    net-tools \
+    iproute2 \
+    iputils-ping \
+    dnsutils \
+    traceroute \
+    tcpdump \
+    netcat-openbsd \
+    whois \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install packages - Network Scanners, Reconnaissance, Vulnerability Scanning, and Enumeration
 #RUN apt-get update && apt-get install -y --no-install-recommends \
 #     nmap \
