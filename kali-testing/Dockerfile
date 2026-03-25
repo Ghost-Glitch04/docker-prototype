@@ -60,8 +60,9 @@ ARG USER_UID=1000
 # Set the USER_GID to the same value as USER_UID by default, which is common for a single-user setup
 ARG USER_GID=1000
 
-# Create a new user with the specified username, UID, GID, and default shell
-RUN useradd -m -u ${USER_UID} -g ${USER_GID} -s /bin/zsh ${USERNAME}
+# Create the group first, then create the user belonging to that group
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+    && useradd -m -u ${USER_UID} -g ${USER_GID} -s /bin/zsh ${USERNAME}
 USER ${USERNAME}
 
 # Set Working Directory to /CTF
